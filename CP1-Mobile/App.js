@@ -7,15 +7,16 @@ export default function App() {
   const [nomeProd, setNomeProd] = useState("")
   const [valorOriginal, setValorOriginal] = useState("")
   const [porcentagemAumento, setPorcentagemAumento] = useState("")
-  
+
   return (
     <View style={styles.container}>
+      <Text>Calculo de Aumento</Text>
+
       <Image
-        source={require('./assets/aumento.jpg')}
+        source={require('./assets/calculadora.png')}
         style={styles.imagem}
       />
       
-      <Text>Calculo de Aumento</Text>
       <TextInput
         style={styles.input}
         placeholder='Digite o nome do produto'
@@ -37,9 +38,14 @@ export default function App() {
         keyboardType='numeric'
       />
 
-      <Button title='enviar' onPress={()=> <CalculoAumento VlOriginal={parseFloat(valorOriginal)} porcentAumento={parseFloat(porcentagemAumento)}/>}/>
+      <Button title='enviar'/>
 
-      
+      <CalculoAumento 
+      style={{backgroundColor:'white'}}
+      nomeProd={nomeProd}
+      VlOriginal={parseFloat(valorOriginal)} 
+      porcentAumento={parseFloat(porcentagemAumento)}
+      />
 
     </View>
   );
@@ -47,15 +53,17 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    padding:20,
     flex: 1,
     backgroundColor: 'grey',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    gap:3
+    gap:5
   },
   imagem:{
     resizeMode:'center',
-    width:200
+    width:200,
+    height:250
   },
   input:{
     backgroundColor:'white',
@@ -63,6 +71,10 @@ const styles = StyleSheet.create({
     borderRadius:5,
     paddingLeft:10,
     borderWidth:2,
-    borderColor:'#a069cc',
+    borderColor:'black',
+    fontWeight:800
+  },
+  resultado:{
+    
   }
 });

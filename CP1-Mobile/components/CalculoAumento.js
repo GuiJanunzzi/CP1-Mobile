@@ -5,7 +5,8 @@ export default (props) =>{
     const resultado = props.VlOriginal + aumento
     return(
         <View>
-            <Text>Teste</Text>
+            <Text>Nome: {props.nomeProd}</Text>
+            <Text>Valor inicial: {props.VlOriginal}</Text>
             <Text>O valor após o aumento é: {resultado} </Text>
         </View>
     )
