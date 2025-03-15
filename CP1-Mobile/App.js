@@ -7,6 +7,24 @@ export default function App() {
   const [nomeProd, setNomeProd] = useState("")
   const [valorOriginal, setValorOriginal] = useState("")
   const [porcentagemAumento, setPorcentagemAumento] = useState("")
+  const [resultado, setResultado] = useState(null);
+
+  const calcular = () => {
+    if (!nomeProd) {
+      alert("Preencha o campo nome!");
+      return;
+    };
+    if (!valorOriginal) {
+      alert("Preencha o campo Valor Original!");
+      return;
+    };
+    if (!porcentagemAumento) {
+      alert("Preencha o campo percentual de aumento!");
+      return;
+    }
+    
+    setResultado(Calculator(valorOriginal, percentual));
+  };
 
   return (
     <View style={styles.container}>
@@ -38,7 +56,7 @@ export default function App() {
         keyboardType='numeric'
       />
 
-      <Button title='enviar'/>
+      <Button title='enviar' onPress={calcular}/>
 
       <CalculoAumento 
       style={{backgroundColor:'white'}}
@@ -46,7 +64,7 @@ export default function App() {
       VlOriginal={parseFloat(valorOriginal)} 
       porcentAumento={parseFloat(porcentagemAumento)}
       />
-
+      
     </View>
   );
 }
