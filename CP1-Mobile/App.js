@@ -23,7 +23,7 @@ export default function App() {
       return;
     }
     
-    setResultado(Calculator(valorOriginal, percentual));
+    setResultado(CalculoAumento(nomeProd, valorOriginal, porcentagemAumento));
   };
 
   return (
@@ -56,14 +56,16 @@ export default function App() {
         keyboardType='numeric'
       />
 
-      <Button title='enviar' onPress={calcular}/>
+      <Button title='calcular' onPress={calcular}/>
 
-      <CalculoAumento 
-      style={{backgroundColor:'white'}}
-      nomeProd={nomeProd}
-      VlOriginal={parseFloat(valorOriginal)} 
-      porcentAumento={parseFloat(porcentagemAumento)}
-      />
+      {resultado && (
+        <CalculoAumento 
+        style={{backgroundColor:'white'}}
+        nomeProd={nomeProd}
+        VlOriginal={parseFloat(valorOriginal)} 
+        porcentAumento={parseFloat(porcentagemAumento)}
+        />
+      )}      
       
     </View>
   );
